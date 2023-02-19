@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="PatoHeist"
-run/main_scene="res://Scenes/Museum.tscn"
+run/main_scene="res://Scenes/Museum/Museum.tscn"
 config/icon="res://icon.png"
 
 [display]

@@ -18,7 +18,7 @@ func _physics_process(delta):
 		navigationAgent.set_velocity(velocity);
 		move_and_slide(velocity);
 		
-		rotation = position.angle_to_point(target.position) + 180;
+		rotation_degrees = rad2deg(get_angle_to(navigationAgent.get_next_location()) + rotation) ;
 		
 		hasArrived = navigationAgent.is_navigation_finished();
 		if (hasCaptured()):
@@ -29,7 +29,7 @@ func apply_acceleration(acceleration: Vector2):
 	velocity.y = move_toward(velocity.y, MAX_SPEED * acceleration.y, ACCELERATION);
 
 func hasCaptured():
-	return position.distance_to(target.position) < 5;
+	return position.distance_to(target.position) < 100;
 
 func _on_VisibilityArea_body_entered(body: Node2D):
 	if (!hasArrived):

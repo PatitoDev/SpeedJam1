@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/Painting/img/monalisa.png" type="Texture" id=1]
+[ext_resource path="res://Shaders/Pixelation.gdshader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/amount = 20
+
+[node name="OpenedPainting" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 842.0
+margin_top = 914.0
+margin_right = 906.0
+margin_bottom = 928.0
+text = "Mona Lisa"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 596.0
+margin_top = 116.0
+margin_right = 1207.0
+margin_bottom = 738.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -35.0
+margin_top = -14.0
+margin_right = 1922.0
+margin_bottom = 1111.0
+color = Color( 0, 0, 0, 0.262745 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Monalisa" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 902, 436 )
+scale = Vector2( 0.786441, 0.786441 )
+texture = ExtResource( 1 )

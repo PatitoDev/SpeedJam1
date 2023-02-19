@@ -1,0 +1,201 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/img/Wall_Collision.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Guard/Guard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Museum/Museum.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Painting/Painting.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Museum/Img/FloorTile.png" type="Texture" id=6]
+[ext_resource path="res://World/img/CornerWall.png" type="Texture" id=7]
+[ext_resource path="res://World/img/CornerWall_Corridor.png" type="Texture" id=8]
+[ext_resource path="res://World/img/FloorTile.png" type="Texture" id=9]
+[ext_resource path="res://World/img/Wall.png" type="Texture" id=10]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+outlines = [ PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 ) ]
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=2]
+1/name = "CornerWall.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "CornerWall_Corridor.png 2"
+2/texture = ExtResource( 8 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "FloorTile.png 3"
+3/texture = ExtResource( 9 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/navigation = SubResource( 3 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "Wall.png 4"
+4/texture = ExtResource( 10 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 64 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "Wall_Collision.png 5"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 64 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 4 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+
+[node name="Museum" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 959, 537 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0.105882, 0.105882, 0.105882, 1 )
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+bake_navigation = true
+navigation_layers = 3
+format = 1
+tile_data = PoolIntArray( 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 9, 3, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 131075, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 131079, 3, 0, 131080, 3, 0, 131081, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 3, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 327688, 3, 0, 327689, 3, 0, 393224, 3, 0, 393225, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 3, 0, 524290, 3, 0, 524291, 3, 0, 524292, 3, 0, 524293, 3, 0, 524294, 3, 0, 524295, 3, 0, 524296, 3, 0, 524297, 3, 0, 589826, 3, 0, 589827, 3, 0, 589828, 3, 0, 589829, 3, 0, 589830, 3, 0, 589831, 3, 0, 589832, 3, 0, 589833, 3, 0, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 3, 0, 655367, 3, 0, 655368, 3, 0, 655369, 3, 0, 720898, 3, 0, 720899, 3, 0, 720900, 3, 0, 720901, 3, 0, 720902, 3, 0, 720903, 3, 0, 720904, 3, 0, 720905, 3, 0 )
+
+[node name="Walls" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+format = 1
+tile_data = PoolIntArray( -65534, -1073741822, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 5, 0, -65527, 5, 0, -65526, 2, 0, 2, 5, 0, 10, 5, 0, 65538, 5, 0, 65546, 5, 0, 131074, 5, 0, 131082, 5, 0, 196610, 5, 0, 196618, 5, 0, 262146, 1610612738, 0, 262147, 5, 0, 262148, 5, 0, 262149, 5, 0, 262150, 5, 0, 262151, -1073741823, 0, 262154, 5, 0, 327690, 5, 0, 393226, 5, 0, 458753, -1073741822, 0, 458754, 5, 0, 458755, 5, 0, 458756, 5, 0, 458757, 5, 0, 458758, 5, 0, 458759, 1, 0, 458762, 5, 0, 524289, 5, 0, 524298, 5, 0, 589825, 5, 0, 589834, 5, 0, 655361, 5, 0, 655370, 5, 0, 720897, 5, 0, 720906, 5, 0, 786433, 1610612738, 0, 786434, 5, 0, 786435, 5, 0, 786436, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0, 786440, 5, 0, 786441, 5, 0, 786442, -1610612734, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 513, 484 )
+
+[node name="WallsOverPlayer" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+format = 1
+tile_data = PoolIntArray( -65534, -1073741822, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 5, 0, -65527, 5, 0, -65526, 2, 0, 2, 5, 0, 10, 5, 0, 65538, 5, 0, 65546, 5, 0, 131074, 5, 0, 131082, 5, 0, 196610, 5, 0, 196618, 5, 0, 262146, 1610612738, 0, 262147, 5, 0, 262148, 5, 0, 262149, 5, 0, 262150, 5, 0, 262151, -1073741823, 0, 262154, 5, 0, 327690, 5, 0, 393226, 5, 0, 458753, -1073741822, 0, 458754, 5, 0, 458755, 5, 0, 458756, 5, 0, 458757, 5, 0, 458758, 5, 0, 458759, 1, 0, 458762, 5, 0, 524289, 5, 0, 524298, 5, 0, 589825, 5, 0, 589834, 5, 0, 655361, 5, 0, 655370, 5, 0, 720897, 5, 0, 720906, 5, 0, 786433, 1610612738, 0, 786434, 5, 0, 786435, 5, 0, 786436, 5, 0, 786437, 5, 0, 786438, 5, 0, 786439, 5, 0, 786440, 5, 0, 786441, 5, 0, 786442, -1610612734, 0 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="FloorTile" type="Sprite" parent="Node2D"]
+position = Vector2( 1459, 204 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile2" type="Sprite" parent="Node2D"]
+position = Vector2( 1459, 268 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile3" type="Sprite" parent="Node2D"]
+position = Vector2( 1523, 268 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile4" type="Sprite" parent="Node2D"]
+position = Vector2( 1523, 332 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile5" type="Sprite" parent="Node2D"]
+position = Vector2( 1523, 396 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile6" type="Sprite" parent="Node2D"]
+position = Vector2( 1523, 460 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile7" type="Sprite" parent="Node2D"]
+position = Vector2( 1523, 524 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile8" type="Sprite" parent="Node2D"]
+position = Vector2( 1587, 524 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile9" type="Sprite" parent="Node2D"]
+position = Vector2( 1587, 588 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile10" type="Sprite" parent="Node2D"]
+position = Vector2( 1587, 652 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile11" type="Sprite" parent="Node2D"]
+position = Vector2( 1523, 652 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile12" type="Sprite" parent="Node2D"]
+position = Vector2( 1459, 652 )
+texture = ExtResource( 6 )
+
+[node name="FloorTile13" type="Sprite" parent="Node2D"]
+position = Vector2( 1395, 652 )
+texture = ExtResource( 6 )
+
+[node name="Guard" parent="." instance=ExtResource( 3 )]
+position = Vector2( 574, 55.0001 )
+rotation = 2.51676
+
+[node name="Guard2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 147, 961 )
+
+[node name="Painting" parent="." instance=ExtResource( 5 )]
+position = Vector2( 597, 778 )
+
+[connection signal="user_interacted_with_painting" from="Player" to="." method="_on_Player_user_interacted_with_painting"]
