@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/paint_brush_hard_1.wav-4badf3d03d4d0b962b6031228071e9aa.sample"
+
+[deps]
+
+source_file="res://sounds/paint_brush_hard_1.wav"
+dest_files=[ "res://.import/paint_brush_hard_1.wav-4badf3d03d4d0b962b6031228071e9aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

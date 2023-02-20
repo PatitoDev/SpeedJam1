@@ -1,3 +1,373 @@
-[gd_scene format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Menu/img/Group 1.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Menu/img/MenuBg.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Menu/img/Group 6.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Menu/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Player/duck.png" type="Texture" id=5]
+[ext_resource path="res://Entities/Guard/duck_police.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Duck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 951, -1000 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 966, 527 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D/DuckPolice:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 229.596, 2259.6 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D/DuckPolice2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 538.086, 2572.09 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D/DuckPolice3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 984.086, 2400.09 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D/DuckPolice4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1387.09, 2526.09 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D/DuckPolice5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1943.09, 2336.09 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Node2D/DuckPolice:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 23.3222 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Node2D/DuckPolice2:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6.22374 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Node2D/DuckPolice3:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Node2D/DuckPolice4:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -7.19457 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Node2D/DuckPolice5:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -18.1386 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Duck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 1.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 951, 1382 ), Vector2( 951, 741 ), Vector2( 951, 741 ), Vector2( 951, -474 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 966, 527 ), Vector2( 966, 527 ), Vector2( 966, -707 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 5.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "onAnimationEnd"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Node2D/DuckPolice:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.1, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 229.596, 2259.6 ), Vector2( 245, 464 ), Vector2( 714, -740 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Node2D/DuckPolice2:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3.7, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 538.086, 2572.09 ), Vector2( 533, 653 ), Vector2( 746, -577 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Node2D/DuckPolice3:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.1, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 984.086, 2400.09 ), Vector2( 882, 654 ), Vector2( 981, -597 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Node2D/DuckPolice4:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.5, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1387.09, 2526.09 ), Vector2( 1191, 609 ), Vector2( 1222.73, -631.269 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Node2D/DuckPolice5:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.9, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1943.09, 2336.09 ), Vector2( 1589, 574 ), Vector2( 1322, -643 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Node2D/DuckPolice:rotation_degrees")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 3.1, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 23.3222, 9.0, 25.7 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Node2D/DuckPolice2:rotation_degrees")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.7, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6.22374, 6.22374, 18.1 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Node2D/DuckPolice3:rotation_degrees")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3.1, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Node2D/DuckPolice4:rotation_degrees")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 3.5, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -7.19457, -7.19457, -7.19457 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Node2D/DuckPolice5:rotation_degrees")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2.9, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -18.1386, -3.8, -19.5 ]
+}
 
 [node name="Menu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="MenuBg" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 2 )
+
+[node name="Title" type="Node2D" parent="."]
+position = Vector2( 966, 527 )
+
+[node name="TitleYellow" type="Sprite" parent="Title"]
+texture = ExtResource( 1 )
+
+[node name="TitleGreen" type="Sprite" parent="Title"]
+texture = ExtResource( 3 )
+
+[node name="Duck" type="Sprite" parent="."]
+position = Vector2( 951, -1000 )
+scale = Vector2( 11, 11 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/Start = SubResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="DuckPolice" type="Sprite" parent="Node2D"]
+position = Vector2( 229.596, 2259.6 )
+rotation = 0.40705
+scale = Vector2( 11, 11 )
+texture = ExtResource( 6 )
+
+[node name="DuckPolice2" type="Sprite" parent="Node2D"]
+position = Vector2( 538.086, 2572.09 )
+rotation = 0.108625
+scale = Vector2( 11, 11 )
+texture = ExtResource( 6 )
+
+[node name="DuckPolice3" type="Sprite" parent="Node2D"]
+position = Vector2( 984.086, 2400.09 )
+scale = Vector2( 11, 11 )
+texture = ExtResource( 6 )
+
+[node name="DuckPolice4" type="Sprite" parent="Node2D"]
+position = Vector2( 1387.09, 2526.09 )
+rotation = -0.125569
+scale = Vector2( 11, 11 )
+texture = ExtResource( 6 )
+
+[node name="DuckPolice5" type="Sprite" parent="Node2D"]
+position = Vector2( 1943.09, 2336.09 )
+rotation = -0.316579
+scale = Vector2( 11, 11 )
+texture = ExtResource( 6 )

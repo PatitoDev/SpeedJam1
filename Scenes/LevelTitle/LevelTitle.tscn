@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/LevelTitle/LevelTitle.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 96
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "end"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 5.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "OnTimerEnd"
+} ]
+}
+
+[node name="LevelTitle" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -58.0
+margin_top = -71.0
+margin_right = 1956.0
+margin_bottom = 1170.0
+color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 52, 84 )
+
+[node name="Label2" type="Label" parent="Node2D"]
+margin_left = 402.0
+margin_top = 368.0
+margin_right = 1452.0
+margin_bottom = 464.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PAINT A PERFECT FAKE"
+
+[node name="Label" type="Label" parent="Node2D"]
+margin_left = 407.0
+margin_top = 367.0
+margin_right = 1457.0
+margin_bottom = 463.0
+custom_fonts/font = SubResource( 1 )
+text = "PAINT A PERFECT FAKE"
+
+[node name="Node" type="Node2D" parent="."]
+position = Vector2( 52, 84 )
+
+[node name="Node2D2" type="Node2D" parent="Node"]
+position = Vector2( 279, 96 )
+
+[node name="Label2" type="Label" parent="Node/Node2D2"]
+margin_left = 402.0
+margin_top = 368.0
+margin_right = 1452.0
+margin_bottom = 464.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "LEVEL 1 -"
+
+[node name="Label" type="Label" parent="Node/Node2D2"]
+margin_left = 407.0
+margin_top = 367.0
+margin_right = 1457.0
+margin_bottom = 463.0
+custom_fonts/font = SubResource( 3 )
+text = "LEVEL 1 -"
+
+[node name="Node2D3" type="Node2D" parent="Node"]
+position = Vector2( 448, 100 )
+
+[node name="PaintingNameLabel" type="Label" parent="Node/Node2D3"]
+margin_left = 402.0
+margin_top = 368.0
+margin_right = 1452.0
+margin_bottom = 464.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "MONA LISA"
+
+[node name="LevelLabel" type="Label" parent="Node/Node2D3"]
+margin_left = 407.0
+margin_top = 365.0
+margin_right = 1457.0
+margin_bottom = 461.0
+custom_colors/font_color = Color( 0, 1, 0.4, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "MONA LISA"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/end = SubResource( 5 )

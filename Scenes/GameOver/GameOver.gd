@@ -1,5 +1,6 @@
 extends Node2D
 
+signal onRestart;
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://Scenes/Museum/Museum.tscn");
+	emit_signal("onRestart");

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var MAX_SPEED = 500
+var MAX_SPEED = 400
 var ACCELERATION = 100
 
 var FRICTION = 100
@@ -18,11 +18,18 @@ func _physics_process(delta):
 		navigationAgent.set_velocity(velocity);
 		move_and_slide(velocity);
 		
-		rotation_degrees = rad2deg(get_angle_to(navigationAgent.get_next_location()) + rotation) ;
+		var navigationArray = navigationAgent.get_nav_path();
+		var rotationTarget;
+		if (navigationArray.size() >= 5):
+			rotationTarget = navigationArray[4];
+		else:
+			rotationTarget = navigationAgent.get_next_location();
+		rotation_degrees = rad2deg(get_angle_to(rotationTarget) + rotation) + 90;
 		
 		hasArrived = navigationAgent.is_navigation_finished();
 		if (hasCaptured()):
-			get_tree().change_scene("res://Scenes/GameOver/GameOver.tscn");
+			get_tree().get_root().get_child(0).onDeath();
+			
 
 func apply_acceleration(acceleration: Vector2):
 	velocity.x = move_toward(velocity.x, MAX_SPEED * acceleration.x, ACCELERATION);
@@ -36,6 +43,7 @@ func _on_VisibilityArea_body_entered(body: Node2D):
 		hasArrived = false;
 		target = body;
 		navigationAgent.set_target_location(target.position);
+		$AudioStreamPlayer.play(0);
 
 func _on_NavigationAgent2D_velocity_computed(safe_velocity):
 	velocity = move_and_slide(safe_velocity);
