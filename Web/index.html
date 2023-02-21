@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+
+<h1>Speed Jam - Leaderboard</h1>
+<b>Sorted by accuracy</b>
+<div id="board"></div>
+
+<style>
+    #board > * {
+        margin: 2px;
+        display: flex;
+        padding: 2em;
+        background-color: darkslategrey;
+        color: white;
+    }
+
+    #board > div > div {
+        font-family: monospace;
+        font-size: 2em;
+        margin: 2em;
+    }
+
+    #board img {
+        height: 30em;
+    }
+</style>
+
+<script>
+    (async () => {
+        const resp = await fetch("https://ku62sri6z1.execute-api.eu-west-2.amazonaws.com/score");
+        const data = await resp.json();
+        const sortedData = data.sort((a,b) => a['rawScore'] - b['rawScore'])
+        const targetEl = document.getElementById('board');
+        sortedData.forEach((score) => {
+            const container = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = `https://duckheist-dev-static.s3.eu-west-2.amazonaws.com/${score['id']}.png`;
+            container.appendChild(img);
+            
+            const labelContainer = document.createElement('div');
+
+            const labelRawScore = document.createElement('div');
+            labelRawScore.innerText = "Raw Accuracy: " + score['rawScore']
+            labelContainer.appendChild(labelRawScore);
+
+            const level = document.createElement('div');
+            level.innerText = "Level: " + score['level']
+            labelContainer.appendChild(level);
+
+            const labelScore = document.createElement('div');
+            labelScore.innerText = "Accuracy: " + score['score']
+            labelContainer.appendChild(labelScore);
+            const labelName = document.createElement('div');
+            labelName.innerText = "User: " + score['userName']
+            labelContainer.appendChild(labelName);
+            const labelTime = document.createElement('div');
+            labelTime.innerText = "Time: " + score['time']
+            labelContainer.appendChild(labelTime);
+            container.appendChild(labelContainer);
+
+            targetEl.appendChild(container);
+        });
+    })();
+</script>

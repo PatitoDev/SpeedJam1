@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mus-duck-caught.ogg-002ce8a508add655ad45f6ae68c0c394.oggstr"
+
+[deps]
+
+source_file="res://sounds/mus-duck-caught.ogg"
+dest_files=[ "res://.import/mus-duck-caught.ogg-002ce8a508add655ad45f6ae68c0c394.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,256 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Scenes/Prep/Prep.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Painting/img/monalisa.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Pixellari.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Icons/Eye.png" type="Texture" id=4]
+[ext_resource path="res://Styles/ButtonNormalStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://Icons/Grabber.png" type="Texture" id=6]
+[ext_resource path="res://Icons/GrabberHover.png" type="Texture" id=7]
+[ext_resource path="res://Icons/circle.png" type="Texture" id=8]
+[ext_resource path="res://sounds/paint_brush_soft_4.wav" type="AudioStream" id=9]
+[ext_resource path="res://Icons/picker.png" type="Texture" id=10]
+[ext_resource path="res://Paintings/vah.png" type="Texture" id=11]
+[ext_resource path="res://Paintings/painting.png" type="Texture" id=12]
+
+[sub_resource type="Theme" id=15]
+
+[sub_resource type="StyleBoxLine" id=11]
+color = Color( 0.686275, 0.686275, 0.686275, 1 )
+thickness = 10
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.686275, 0.686275, 0.686275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.686275, 0.686275, 0.686275, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.215686, 0.631373, 0.607843, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 5.0
+expand_margin_top = 3.0
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+Label/fonts/font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 33
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.376471, 0.815686, 0.360784, 1 )
+border_width_left = 4
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.376471, 0.815686, 0.360784, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 5.0
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.376471, 0.815686, 0.360784, 1 )
+border_width_left = 4
+border_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 3.0
+
+[node name="Prep" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -66.0
+margin_top = -46.0
+margin_right = 2002.0
+margin_bottom = 1213.0
+color = Color( 0.211765, 0.211765, 0.211765, 1 )
+
+[node name="LeftCanvas" type="Node2D" parent="."]
+position = Vector2( 60, 228 )
+rotation = -0.155334
+
+[node name="PickerContainer" type="Node2D" parent="LeftCanvas"]
+position = Vector2( -199.739, -165.899 )
+
+[node name="ColorRect2" type="ColorRect" parent="LeftCanvas/PickerContainer"]
+margin_left = 871.0
+margin_top = 328.0
+margin_right = 997.0
+margin_bottom = 454.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Picker" type="Button" parent="LeftCanvas/PickerContainer"]
+margin_left = 874.0
+margin_top = 331.0
+margin_right = 994.0
+margin_bottom = 451.0
+theme = SubResource( 15 )
+
+[node name="Picker2" type="Sprite" parent="LeftCanvas/PickerContainer"]
+position = Vector2( 934, 390 )
+texture = ExtResource( 10 )
+
+[node name="Circle2" type="Sprite" parent="LeftCanvas"]
+position = Vector2( 634.173, 704.476 )
+rotation = 0.118189
+scale = Vector2( 0.24485, 0.24485 )
+texture = ExtResource( 8 )
+
+[node name="Circle" type="Sprite" parent="LeftCanvas"]
+position = Vector2( 633.728, 89.1301 )
+rotation = 0.118189
+scale = Vector2( 0.519997, 0.519997 )
+texture = ExtResource( 8 )
+
+[node name="BrushSizeSlider" type="VSlider" parent="LeftCanvas"]
+margin_left = 609.405
+margin_top = 107.389
+margin_right = 658.405
+margin_bottom = 693.389
+custom_icons/tick = ExtResource( 6 )
+custom_icons/grabber_disabled = ExtResource( 6 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 6 )
+custom_styles/slider = SubResource( 11 )
+custom_styles/grabber_area_highlight = SubResource( 14 )
+custom_styles/grabber_area = SubResource( 13 )
+min_value = 5.0
+max_value = 50.0
+step = 5.0
+value = 10.0
+
+[node name="ToggleOverlayButton" type="Button" parent="LeftCanvas"]
+margin_left = 167.0
+margin_top = -68.0
+margin_right = 364.0
+margin_bottom = -30.0
+theme = SubResource( 4 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = ExtResource( 5 )
+text = "HIDE OVERLAY"
+icon = ExtResource( 4 )
+
+[node name="Canvas" type="ViewportContainer" parent="LeftCanvas"]
+margin_right = 585.0
+margin_bottom = 629.0
+
+[node name="Viewport" type="Viewport" parent="LeftCanvas/Canvas"]
+size = Vector2( 585, 629 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="LeftCanvas/Canvas/Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+color = Color( 0.894118, 0.894118, 0.894118, 1 )
+
+[node name="DrawingTarget" type="Node2D" parent="LeftCanvas/Canvas/Viewport"]
+
+[node name="Overlay" type="Sprite" parent="LeftCanvas"]
+modulate = Color( 1, 1, 1, 0.372549 )
+position = Vector2( 295, 400 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="RightCanvas" type="Node2D" parent="."]
+position = Vector2( 11, -45 )
+rotation = 0.0918837
+
+[node name="1" type="Sprite" parent="RightCanvas"]
+visible = false
+position = Vector2( 1573, 483 )
+texture = ExtResource( 2 )
+
+[node name="2" type="Sprite" parent="RightCanvas"]
+visible = false
+position = Vector2( 1574.3, 497.65 )
+scale = Vector2( 1.19045, 1.19045 )
+texture = ExtResource( 11 )
+
+[node name="3" type="Sprite" parent="RightCanvas"]
+visible = false
+position = Vector2( 1571.27, 464.789 )
+scale = Vector2( 1.19045, 1.19045 )
+texture = ExtResource( 12 )
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 772.0
+margin_top = 120.0
+margin_right = 1168.0
+margin_bottom = 184.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 0.960784, 0.0745098, 1, 1 )
+text = "QUACKASTIC"
+align = 1
+
+[node name="ScoreLabel2" type="Label" parent="."]
+margin_left = 698.0
+margin_top = 47.0
+margin_right = 1262.0
+margin_bottom = 111.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "YOUR PAINTING IS"
+
+[node name="Test" type="Node2D" parent="."]
+visible = false
+
+[node name="SimilarityScore" type="Label" parent="Test"]
+margin_left = 887.0
+margin_top = 496.0
+margin_right = 927.0
+margin_bottom = 510.0
+rect_scale = Vector2( 5, 5 )
+text = "0"
+
+[node name="test" type="Sprite" parent="Test"]
+position = Vector2( 1503, 522 )
+
+[node name="test2" type="Sprite" parent="Test"]
+position = Vector2( 386, 1329 )
+
+[node name="DoneButton" type="Button" parent="."]
+margin_left = 936.0
+margin_top = 976.0
+margin_right = 1037.0
+margin_bottom = 1014.0
+theme = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
+text = "DONE"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="pressed" from="LeftCanvas/PickerContainer/Picker" to="." method="_on_Picker_pressed"]
+[connection signal="value_changed" from="LeftCanvas/BrushSizeSlider" to="." method="_on_VSlider_value_changed"]
+[connection signal="pressed" from="LeftCanvas/ToggleOverlayButton" to="." method="_on_HideOverlayButton_pressed"]
+[connection signal="mouse_entered" from="LeftCanvas/Canvas" to="." method="_on_Canvas_mouse_entered"]
+[connection signal="mouse_exited" from="LeftCanvas/Canvas" to="." method="_on_Canvas_mouse_exited"]
+[connection signal="pressed" from="DoneButton" to="." method="_on_DoneButton_pressed"]

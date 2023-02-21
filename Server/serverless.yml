@@ -1,0 +1,84 @@
+org: niv3kelpato
+app: duck-heist-aws
+service: duckheist
+frameworkVersion: '3'
+
+params:
+  default:
+    UserScore: ${self:service}-${sls:stage}-UserScore
+    StaticBucket: ${self:service}-${sls:stage}-static
+    API: ${self:service}-${sls:stage}-API
+
+provider:
+  name: aws
+  region: eu-west-2
+  runtime: nodejs16.x
+  environment:
+    USER_SCORE: ${param:UserScore}
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - 'dynamodb:PutItem'
+            - 'dynamodb:Get*'
+            - 'dynamodb:Scan*'
+            - 'dynamodb:Query'
+            - 'dynamodb:UpdateItem'
+            - 'dynamodb:DeleteItem'
+          Resource: 
+            - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${param:UserScore}
+        - Effect: 'Allow'
+          Action:
+            - "s3:PutObject"
+            - "s3:PutObjectAcl" 
+          Resource: 
+            - arn:aws:s3:::${param:StaticBucket}/*
+
+functions:
+  ApiGetScore:
+    name: ${param:API}-onGetScore
+    handler: handler.getAllLevelScores
+    events:
+      - httpApi:
+          cors: true
+          method: GET
+          path: /score
+  ApiUploadScore:
+    name: ${param:API}-setScore
+    handler: handler.setScore
+    events:
+      - httpApi:
+          cors: true
+          method: POST
+          path: /score
+
+resources:
+  Resources:
+    UserScores:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        TableName: ${param:UserScore}
+    Static:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${param:StaticBucket}
+        AccessControl: PublicRead
+        CorsConfiguration:
+          CorsRules:
+          - AllowedMethods:
+            - GET
+            - HEAD
+            AllowedOrigins:
+            - "*"
+            AllowedHeaders:
+            - "*"
+plugins:
+  - serverless-esbuild
